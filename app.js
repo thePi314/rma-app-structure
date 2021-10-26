@@ -1,4 +1,4 @@
-let script = [
+let scripts = [
     './script1.js',
     './script2.js',
     './script3.js'
@@ -7,15 +7,19 @@ let script = [
 function create_script(src){
     let elem = document.createElement('script');
     elem.src = src;
+    elem.onload = () => {
+        scripts.splice(0,1);
+        load_scripts();
+    };
 
     return elem
 }
 
 function load_scripts(){
-    for(let ind=0;ind<script.length;ind++){
-        console.log(ind);
-        document.head.append(create_script(script[ind]));
-    }
+    if(scripts.length == 0)
+        return;
+        
+    document.head.append(create_script(scripts[0]));
 }
 
 window.onload = () => {
