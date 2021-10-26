@@ -1,0 +1,1 @@
+alert('EVO I MENE 1');
