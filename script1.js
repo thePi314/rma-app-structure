@@ -1,1 +1,1 @@
-alert('EVO I MENE 1');
+console.log('EVO I MENE 1');
