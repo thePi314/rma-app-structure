@@ -1,7 +1,7 @@
 var CONFIG_JSON = {
     "dependencies": [
-        "./script1.js",
-        "./script2.js",
-        "./script3.js"
+        "./component-lib/ScreenComponentLib.js"
     ]
 }
+
+console.log('Config Loaded!');

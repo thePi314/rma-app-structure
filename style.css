@@ -1,3 +1,10 @@
+:root {
+    --var-resolution-width: 360px;
+    --var-resolution-height: 640px;
+
+    --var-background-color: #101010;
+}
+
 body {
     margin: 0;
     width: 100vw;
@@ -11,8 +18,8 @@ body {
 }
 
 .screen {
-    width: 360px;
-    height: 640px;
+    width: var(--var-resolution-width);
+    height: var(--var-resolution-height);
     background: whitesmoke;
 }
 

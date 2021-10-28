@@ -1,33 +1,35 @@
-class ScriptLoader {
-    static scripts = [];
-    
-    static load_config_file(){
-        document.body.append(ScriptLoader.create_script_element('./config.js', ()=>{
-            ScriptLoader.scripts = CONFIG_JSON.dependencies;
-            ScriptLoader.load_scripts();
-        }));
-    }
-    
-    static create_script_element(src, on_load_event = () => {}){
-        let elem = document.createElement('script');
-        elem.src = src;
-        elem.onload = on_load_event;
-    
-        return elem;
-    }
-    
-    static load_scripts(){
-        if(ScriptLoader.scripts.length == 0)
+const CONFIG_FILE_PATH = './config.js';
+
+var APP = {
+    prepare_dependencies: [
+        "./utils/ScriptLoader.js"
+    ],
+    load_dep: function(){
+        if(APP.prepare_dependencies.length <= 0){
+            APP.prepare_app();
             return;
-    
-        document.body.append(
-            ScriptLoader.create_script_element(
-                ScriptLoader.scripts[0], () => ScriptLoader.load_scripts()));
-    
-        ScriptLoader.scripts.shift();
-    }
+        }
+        
+        let elem = document.createElement("script");
+        elem.src = APP.prepare_dependencies[0];
+        elem.onload = () => {
+            APP.prepare_dependencies.shift();
+            APP.load_dep()
+        }
+
+        document.head.append(elem);
+    },
+    prepare_app: function(){
+        //APP.load_dep();
+        ScriptLoader.load_config_file(CONFIG_FILE_PATH);
+    },
+    load_screens: function (){
+        let screen_path = './screens/home/';
+
+    },
+    app_ready: false
 }
 
 window.onload = () => {
-    ScriptLoader.load_config_file();
+    APP.load_dep();
 }
