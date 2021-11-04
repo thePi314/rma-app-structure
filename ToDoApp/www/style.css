@@ -1,0 +1,24 @@
+:root {
+    --var-resolution-width: 360px;
+    --var-resolution-height: 640px;
+
+    --var-background-color: #101010;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #101010;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+
+.screen {
+    width: var(--var-resolution-width);
+    height: var(--var-resolution-height);
+    background: whitesmoke;
+}
