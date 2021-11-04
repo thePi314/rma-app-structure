@@ -1,15 +1,18 @@
-console.log('HomeScreen start loading!')
-
 class HomeScreen extends ScreenComponent {
     static Name = "Home Screen";
     static Id = "home-screen";
 
-    constructor(){}
+    constructor(){
+        super();
+    }
 
     init(){
-        this.ScreenDom = document.getElementById('home-screen');
+        this.dom = document.getElementById('home-screen');
+        this.dom.querySelector('#gotohome2').addEventListener('click',function(){
+            Navigator.navigate('home2');
+        });
     }
     destroy(){}
 }
 
-console.log('HomeScreen loaded!')
+APP.screens["home"] = HomeScreen;

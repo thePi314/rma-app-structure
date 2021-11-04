@@ -3,5 +3,3 @@ class ScreenComponent {
     static Id = "screen-screen";
     
 }
-
-console.log('ScreenComponent Loaded!')

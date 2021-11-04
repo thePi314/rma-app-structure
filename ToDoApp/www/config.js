@@ -1,5 +1,9 @@
 var CONFIG_JSON = {
     dependencies: [
-        "./component/ScreenComponent.js"
-    ]
+        './utils/FileLoader.js',
+        './utils/StyleLoader.js',
+        './utils/Navigator.js',
+        "./component/ScreenComponent.js",
+    ],
+    start_screen: 'home'
 }

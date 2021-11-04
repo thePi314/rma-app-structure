@@ -27,10 +27,16 @@ var APP = {
         ScriptLoader.load_scripts(CONFIG_JSON.dependencies, APP.load_screens);
     },
     load_screens: function (){
-        let screens = ['./screens/home/home.js'];
-        ScriptLoader.load_scripts(screens);
+        let screens = [
+            './screens/home/home.js',
+            './screens/home2/home2.js'
+        ];
+        ScriptLoader.load_scripts(screens,function(){APP.init_app()});
     },
-    app_ready: false
+    screens: {},
+    init_app: function(){
+        Navigator.navigate(CONFIG_JSON.start_screen);
+    }
 }
 
 document.addEventListener('deviceready', onDeviceReady, false);
