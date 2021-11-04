@@ -20,4 +20,3 @@ class ScriptLoader {
                 scripts[0],scripts.slice(1,scripts.length), on_loaded_scripts));
     }
 }
-

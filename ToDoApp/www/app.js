@@ -1,9 +1,8 @@
 const CONFIG_PATH = './config.js'; 
-const SCRIPT_LOADER = './utils/ScriptLoader.js'
+const SCRIPT_LOADER = './utils/ScriptLoader.js';
 
 var app = {
-    config: null,
-    app_ready: false
+    config: null
 }
 
 function load_script_loader() {
@@ -12,7 +11,7 @@ function load_script_loader() {
     elem.onload = () => {
         ScriptLoader.load_scripts([CONFIG_PATH], ()=>{
             ScriptLoader.load_scripts(app.config.dependencies, ()=>{
-                app.app_ready=true;
+                Navigator.load_screen('home');
             });
         });
     };
@@ -20,7 +19,9 @@ function load_script_loader() {
     document.head.append(elem);
 }
 
-window.onload = () => {
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady() {
+    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     load_script_loader();
-    //ScriptLoader.load_scripts(['./script1.js','./script2.js','./script3.js']);
 }
