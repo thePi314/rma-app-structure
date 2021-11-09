@@ -2,16 +2,24 @@ const CONFIG_PATH = './config.js';
 const SCRIPT_LOADER = './utils/ScriptLoader.js';
 
 var app = {
-    config: null
+    config: null,
+    loaded_screens: {}
 }
 
+// TODO TO KILL WHEN DONE
 function load_script_loader() {
     let elem = document.createElement('script');
     elem.src = SCRIPT_LOADER;
     elem.onload = () => {
         ScriptLoader.load_scripts([CONFIG_PATH], ()=>{
             ScriptLoader.load_scripts(app.config.dependencies, ()=>{
-                Navigator.load_screen('home');
+                ScriptLoader.load_scripts(
+                    Object.keys(app.config.screens)
+                    .map(screen => `./screens/${screen}/${screen}.js`),
+                    () => {
+                        Navigator.navigate('home');
+                    }
+                )
             });
         });
     };
