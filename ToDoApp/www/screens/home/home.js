@@ -1,6 +1,7 @@
 class HomeScreen {
     static Name = 'Home Screen'
     static Id = 'home-screen';
+    static Template = '';
 
     init(){
         document.querySelector("#toHome2").addEventListener('click',function(){

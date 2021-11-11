@@ -17,6 +17,15 @@ function load_script_loader() {
                     Object.keys(app.config.screens)
                     .map(screen => `./screens/${screen}/${screen}.js`),
                     () => {
+                        for(let elem in app.loaded_screens) {
+                            FileLoader.load_file(`./screens/${elem}/${elem}.html`,(data)=>{
+                                app.loaded_screens[elem].Template = data;
+                            },(err)=>{
+                                app.loaded_screens[elem].Template = "NOT LOADED";
+                                console.log(err);
+                            });  
+                        } 
+
                         Navigator.navigate('home');
                     }
                 )
