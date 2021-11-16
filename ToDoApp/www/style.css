@@ -11,8 +11,8 @@ body {
 }
 
 .screen {
-    width: 360px;
-    height: 640px;
+    width: var(--base-width);
+    height: var(--base-height);
     background: whitesmoke;
 }
 

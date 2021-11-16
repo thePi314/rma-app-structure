@@ -13,6 +13,7 @@ function load_script_loader() {
     elem.onload = () => {
         ScriptLoader.load_scripts([CONFIG_PATH], ()=>{
             ScriptLoader.load_scripts(app.config.dependencies, ()=>{
+
                 ScriptLoader.load_scripts(
                     Object.keys(app.config.screens)
                     .map(screen => `./screens/${screen}/${screen}.js`),
@@ -28,7 +29,9 @@ function load_script_loader() {
 
                         Navigator.navigate('home');
                     }
-                )
+                );
+
+                StyleLoader.load_style([...app.config.styles]);
             });
         });
     };
