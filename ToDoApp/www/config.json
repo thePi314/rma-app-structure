@@ -1,0 +1,15 @@
+{
+    "dependencies": [
+        "./utils/StyleLoader.js",
+        "./utils/Navigator.js",
+        "./component/ScreenComponent.js"
+    ],
+    "styles":[
+        "./assets/styles/colors.css",
+        "./assets/styles/dimensions.css"
+    ],
+    "start_screen": "home",
+    "screens": {
+        "home": true
+    }
+}

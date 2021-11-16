@@ -1,46 +1,72 @@
-const CONFIG_FILE_PATH = './config.js';
+const CONFIG_FILE_PATH = './config.json';
 
-var APP = {
+var app = {
+    screens: {},
     prepare_dependencies: [
-        "./utils/ScriptLoader.js"
+        "./utils/ScriptLoader.js",
+        "./utils/FileLoader.js"
     ],
     load_dep: function(){
-        if(APP.prepare_dependencies.length <= 0){
-            APP.prepare_app();
+        if(app.prepare_dependencies.length <= 0){
+            app.prepare_app();
             return;
         }
         
         let elem = document.createElement("script");
-        elem.src = APP.prepare_dependencies[0];
+        elem.src = app.prepare_dependencies[0];
         elem.onload = () => {
-            APP.prepare_dependencies.shift();
-            APP.load_dep()
+            app.prepare_dependencies.shift();
+            app.load_dep()
         }
 
         document.head.append(elem);
     },
     prepare_app: function(){
-        //APP.load_dep();
-        ScriptLoader.load_scripts([CONFIG_FILE_PATH],APP.process_config);
+        FileLoader.load_file(CONFIG_FILE_PATH, 
+            (data) => {
+                app.config = JSON.parse(data);
+                app.process_config();
+            },
+            (err) => {
+                console.log(`CONFIG LOAD FAILED: ${err}`);
+            }
+        );
     },
     process_config: function(){
-        ScriptLoader.load_scripts(CONFIG_JSON.dependencies, APP.load_screens);
+        ScriptLoader.load_scripts(
+            app.config.dependencies, 
+            ()=>{
+                StyleLoader.load_style(app.config.styles);
+                app.load_screens(); 
+            }
+        );
     },
     load_screens: function (){
-        let screens = [
-            './screens/home/home.js',
-            './screens/home2/home2.js'
-        ];
-        ScriptLoader.load_scripts(screens,function(){APP.init_app()});
+        let screens = Object.keys(app.config.screens).map(
+            key => `./screens/${key}/${key.split('/')[key.split('/').length-1]}.js`);
+
+        ScriptLoader.load_scripts(screens,() => {
+            for(let screen in app.screens)
+                FileLoader.load_file(
+                    `./screens/${screen}/${screen.split('/')[screen.split('/').length-1]}.html`,
+                    (data) => {
+                        app.screens[screen].Template = data;
+                        if(screen == app.config.start_screen)
+                            app.init_app();
+                    },
+                    (err) => {
+                        console.log(`FAILED TO LOAD SCREEN TEMPLATE: ${screen} ${err}`);
+                    }
+                )
+        });
     },
-    screens: {},
     init_app: function(){
-        Navigator.navigate(CONFIG_JSON.start_screen);
+        Navigator.navigate(app.config.start_screen);
     }
 }
 
 document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);    
-    APP.load_dep();
+    app.load_dep();
 }
