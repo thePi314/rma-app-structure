@@ -1,14 +1,9 @@
-:root {
-    --var-resolution-width: 360px;
-    --var-resolution-height: 640px;
-}
-
 body {
     margin: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #101010;
+    background: grey;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -16,19 +11,8 @@ body {
 }
 
 .screen {
-    width: var(--base-width);
-    height: var(--base-height);
-    background: whitesmoke;
+    width: var(--dimension-width);
+    height: var(--dimension-height);
+    background: var(--color-black);
 }
 
-.loptica {
-    background: red;
-    width: 128px;
-    height: 128px;
-    border-radius: 50%;
-    display: block;
-}
-
-.hello-kitty {
-    color: green;
-}

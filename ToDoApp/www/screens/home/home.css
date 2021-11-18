@@ -1,3 +1,32 @@
+
+.component-header {
+    width: 100%;
+    background: var(--color-grey-yellow);
+}
+
+.component-header > .row {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+
+    min-height: 48px;
+    max-height: 48px;
+    height: 48px;
+}
+
+.component-header > .row > .toggler {
+    width: 27px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.component-header > .navbar {
+    height: calc(var(--dimension-height) - 48px);
+    width: 100%;
+    
+    display: none;
+
 #home-screen {
     background: var(--color-black);   
 }
