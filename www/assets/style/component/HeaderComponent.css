@@ -1,0 +1,9 @@
+.header-component {
+    display: flex;
+    flex-flow: row;
+
+    width: 100%;
+    height: 48px;
+
+    background: var(--color-main-yellow);
+}
