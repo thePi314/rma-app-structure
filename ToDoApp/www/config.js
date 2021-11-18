@@ -8,6 +8,10 @@ app.config = {
         './utils/Navigator.js',
         './utils/FileLoader.js'
     ],
+    components: [
+        './components/base',
+        './components/header'
+    ],
     screens: {
         "home": false
     }

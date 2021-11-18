@@ -24,7 +24,7 @@
 .component-header > .navbar {
     display: none;
     min-height: calc(var(--base-height) - 48px);
-    padding: 0 20px;
+    padding: 50px 20px 0;
 }
 
 .component-header > .navbar.collapsed {
@@ -32,10 +32,15 @@
 }
 
 .component-header > .navbar > .navbar-item {
-    display: block;
+    display: flex;
     text-decoration: none;
     color: var(--color-black);
     font-size: 24px;
     font-weight: 800;
     margin: 8px 0;
+    align-items: end;
+}
+
+.component-header > .navbar > .navbar-item img {
+    margin-right: 20px;
 }

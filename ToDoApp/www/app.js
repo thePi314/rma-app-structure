@@ -3,7 +3,8 @@ const SCRIPT_LOADER = './utils/ScriptLoader.js';
 
 var app = {
     config: null,
-    loaded_screens: {}
+    loaded_screens: {},
+    loaded_components: {}
 }
 
 // TODO TO KILL WHEN DONE
@@ -13,7 +14,12 @@ function load_script_loader() {
     elem.onload = () => {
         ScriptLoader.load_scripts([CONFIG_PATH], ()=>{
             ScriptLoader.load_scripts(app.config.dependencies, ()=>{
-
+                ScriptLoader.load_scripts(
+                    app.config.components.map(
+                        component => `${component}/${component.split('/')[component.split('/').length-1]}.js`
+                    ), ()=> {
+                        
+                    });
                 ScriptLoader.load_scripts(
                     Object.keys(app.config.screens)
                     .map(screen => `./screens/${screen}/${screen}.js`),
