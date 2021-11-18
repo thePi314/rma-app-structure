@@ -3,6 +3,10 @@ class HomeScreen extends Screen {
     static Name = 'Home Screen'
     static Id = 'home-screen';
     static Template = '';
+
+    constructor(){
+        super();
+    }
 }
 
-app.loaded_screens['home'] = HomeScreen;
+app.screens['home'] = HomeScreen;

@@ -8,6 +8,11 @@
         "./assets/styles/colors.css",
         "./assets/styles/dimensions.css"
     ],
+    "components": [
+        "./screens/screen",
+        "./components/base",
+        "./components/header"
+    ],
     "start_screen": "home",
     "screens": {
         "home": true

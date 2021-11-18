@@ -31,8 +31,8 @@ class HeaderComponent extends BaseComponent{
             this.Template = data;
             StyleLoader.load_style([this.Config.style]);
         });
-    } 
+    }
 }
 
-app.loaded_components[HeaderComponent.className] = HeaderComponent;
+app.components[HeaderComponent.className] = HeaderComponent;
 HeaderComponent.load_config();
