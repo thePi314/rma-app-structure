@@ -18,26 +18,25 @@ function load_script_loader() {
                     app.config.components.map(
                         component => `${component}/${component.split('/')[component.split('/').length-1]}.js`
                     ), ()=> {
-                        
+                        ScriptLoader.load_scripts(
+                            Object.keys(app.config.screens)
+                            .map(screen => `./screens/${screen}/${screen}.js`),
+                            () => {
+                                for(let elem in app.loaded_screens) {
+                                    FileLoader.load_file(`./screens/${elem}/${elem}.html`,(data)=>{
+                                        app.loaded_screens[elem].Template = data;
+                                    },(err)=>{
+                                        app.loaded_screens[elem].Template = "NOT LOADED";
+                                        console.log(err);
+                                    });  
+                                } 
+        
+                                Navigator.navigate('home');
+                            }
+                        );
+        
+                        StyleLoader.load_style([...app.config.styles]);
                     });
-                ScriptLoader.load_scripts(
-                    Object.keys(app.config.screens)
-                    .map(screen => `./screens/${screen}/${screen}.js`),
-                    () => {
-                        for(let elem in app.loaded_screens) {
-                            FileLoader.load_file(`./screens/${elem}/${elem}.html`,(data)=>{
-                                app.loaded_screens[elem].Template = data;
-                            },(err)=>{
-                                app.loaded_screens[elem].Template = "NOT LOADED";
-                                console.log(err);
-                            });  
-                        } 
-
-                        Navigator.navigate('home');
-                    }
-                );
-
-                StyleLoader.load_style([...app.config.styles]);
             });
         });
     };

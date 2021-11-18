@@ -2,16 +2,7 @@ class BaseComponent {
     static Name = 'base';
     static ClassName = 'component-base';
     static Template = '';
-    static Events = {
-        'init': [
-            {
-                name: 'click',
-                process: (event, dom) => {
-
-                }
-            }
-        ]
-    }
+    static Events = {}
 
     static get Config(){
         return {
@@ -21,12 +12,20 @@ class BaseComponent {
     }
     
     static init_events(){
-        document.querySelectorAll(`.${this.ClassName}`).forEach(elem => {
-            for(let event in this.Events.init){
-                elem.addEventListener(event.name, (evt)=>{
-                    event.process(evt, elem);
-                })
-            }
-        });
+        for(let ind = 0 ; ind < this.Events.init.length;ind++){
+            let event = this.Events.init[ind];
+
+            let elems = document.querySelectorAll(`.${event.component ?? this.ClassName}`)
+            elems.forEach(elem => {
+                console.log(elem)
+
+                if('name' in Object.keys(event))
+                    elem.addEventListener(event.name, (evt)=>{
+                        event.process(evt, elem);
+                    });
+                else
+                    event.process(elem);
+            });
+        }
     }
 }
