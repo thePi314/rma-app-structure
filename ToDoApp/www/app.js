@@ -1,53 +1,52 @@
-const CONFIG_FILE_PATH = './config.js';
+const CONFIG_PATH = './config.js'; 
+const SCRIPT_LOADER = './utils/ScriptLoader.js';
 
-var APP = {
-    prepare_dependencies: [
-        "./utils/ScriptLoader.js"
-    ],
-    load_dep: function(){
-        if(APP.prepare_dependencies.length <= 0){
-            APP.prepare_app();
-            return;
-        }
+var app = {
+    config: null,
+    loaded_screens: {},
+    loaded_components: {}
+}
+
+// TODO TO KILL WHEN DONE
+function load_script_loader() {
+    let elem = document.createElement('script');
+    elem.src = SCRIPT_LOADER;
+    elem.onload = () => {
+        ScriptLoader.load_scripts([CONFIG_PATH], ()=>{
+            ScriptLoader.load_scripts(app.config.dependencies, ()=>{
+                ScriptLoader.load_scripts(
+                    app.config.components.map(
+                        component => `${component}/${component.split('/')[component.split('/').length-1]}.js`
+                    ), ()=> {
+                        ScriptLoader.load_scripts(
+                            Object.keys(app.config.screens)
+                            .map(screen => `./screens/${screen}/${screen}.js`),
+                            () => {
+                                for(let elem in app.loaded_screens) {
+                                    FileLoader.load_file(`./screens/${elem}/${elem}.html`,(data)=>{
+                                        app.loaded_screens[elem].Template = data;
+                                    },(err)=>{
+                                        app.loaded_screens[elem].Template = "NOT LOADED";
+                                        console.log(err);
+                                    });  
+                                } 
         
-        let elem = document.createElement("script");
-        elem.src = APP.prepare_dependencies[0];
-        elem.onload = () => {
-            APP.prepare_dependencies.shift();
-            APP.load_dep()
-        }
+                                Navigator.navigate('home');
+                            }
+                        );
+        
+                        StyleLoader.load_style([...app.config.styles]);
+                    });
+            });
+        });
+    };
 
-        document.head.append(elem);
-    },
-    load_styles: function(){
-        StyleLoader.load_style([...CONFIG_JSON.styles]);
-    },
-    prepare_app: function(){
-        //APP.load_dep();
-        ScriptLoader.load_scripts([CONFIG_FILE_PATH],APP.process_config);
-    },
-    process_config: function(){
-        ScriptLoader.load_scripts(CONFIG_JSON.dependencies, function(){ APP.load_screens();APP.load_styles();});
-    },
-    load_screens: function (){
-        let screens = Object.keys(CONFIG_JSON.screens).map(screen => `screens/${screen}/${screen.split('/').pop()}.js`);
-        ScriptLoader.load_scripts(screens,function(){APP.init_app()});
-    },
-    screens: {},
-    init_app: function(){
-        Navigator.navigate(CONFIG_JSON.start_screen);
-    }
+    document.head.append(elem);
 }
 
-/*
 document.addEventListener('deviceready', onDeviceReady, false);
+
 function onDeviceReady() {
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);    
-    APP.load_dep();
+    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+    load_script_loader();
 }
-*/
-
-window.onload = () => {
-    APP.load_dep();
-}
-

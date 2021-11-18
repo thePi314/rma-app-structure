@@ -1,3 +1,46 @@
 #home-screen {
-    
+    background: var(--color-black);   
+}
+
+.component-header {
+    width: 100%;
+    background: var(--color-lemon);
+}
+
+.component-header > .displayed-row {
+    display: flex;
+    flex-flow: row;
+    height: 48px;
+}
+
+.component-header > .displayed-row > .navbar-toogler {
+    margin: auto;
+    margin-left: auto;
+    margin-right: 15px;
+    height: 32px;
+    width: auto;
+}
+
+.component-header > .navbar {
+    display: none;
+    min-height: calc(var(--base-height) - 48px);
+    padding: 50px 20px 0;
+}
+
+.component-header > .navbar.collapsed {
+    display: block;
+}
+
+.component-header > .navbar > .navbar-item {
+    display: flex;
+    text-decoration: none;
+    color: var(--color-black);
+    font-size: 24px;
+    font-weight: 800;
+    margin: 8px 0;
+    align-items: end;
+}
+
+.component-header > .navbar > .navbar-item img {
+    margin-right: 20px;
 }

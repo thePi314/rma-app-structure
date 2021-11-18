@@ -1,16 +1,18 @@
-var CONFIG_JSON = {
+app.config = {
+    styles: [
+        './assets/styles/colors.css',
+        './assets/styles/dimensions.css'
+    ],
     dependencies: [
-        './utils/FileLoader.js',
         './utils/StyleLoader.js',
         './utils/Navigator.js',
-        "./component/ScreenComponent.js",
+        './utils/FileLoader.js'
     ],
-    styles: [
-        './assets/style/colors.css'
+    components: [
+        './components/base',
+        './components/header'
     ],
-    start_screen: 'home',
     screens: {
-        'home': false,
-        'home2': false
+        "home": false
     }
 }

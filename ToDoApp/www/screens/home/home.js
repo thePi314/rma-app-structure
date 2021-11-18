@@ -1,15 +1,7 @@
-class HomeScreen extends ScreenComponent {
-    static Name = "Home Screen";
-    static Id = "home-screen";
-
-    constructor(){
-        super();
-    }
-    
-    init(){
-       
-    }
-    destroy(){}
+class HomeScreen extends Screen {
+    static Name = 'Home Screen'
+    static Id = 'home-screen';
+    static Template = '';
 }
 
-APP.screens["home"] = HomeScreen;
+app.loaded_screens['home'] = HomeScreen;

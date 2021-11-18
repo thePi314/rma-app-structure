@@ -16,13 +16,19 @@ body {
 }
 
 .screen {
-    width: var(--var-resolution-width);
-    height: var(--var-resolution-height);
-    background: var(--color-main-black);
-    display: none;
+    width: var(--base-width);
+    height: var(--base-height);
+    background: whitesmoke;
 }
 
-.screen.visible {
-    display: flex;
-    flex-flow: column;
+.loptica {
+    background: red;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    display: block;
+}
+
+.hello-kitty {
+    color: green;
 }

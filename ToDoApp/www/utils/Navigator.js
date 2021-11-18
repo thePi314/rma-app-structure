@@ -1,17 +1,15 @@
-class Navigator {
-    static CURRENT_SCREEN = '';
+class Navigator{
+    static CURRENT_SCREEN = null;
     static CURRENT_SCREEN_INSTANCE = null;
 
-    static navigate(screen){
-        Navigator.CURRENT_SCREEN = screen;
+    static navigate(screen_name){
+        let name = screen_name.split('/')[screen_name.split('/').length-1];
+        
+        document.querySelector('.app').innerHTML = app.loaded_screens[name].Template; 
+        StyleLoader.load_style([`./screens/${screen_name}/${name}.css`]);
+        Navigator.CURRENT_SCREEN = screen_name;
 
-        //FileLoader.load_file(`./screens/${screen}/${screen}.html`,function(data){
-            //document.querySelector('.app').innerHTML = data;
-
-            StyleLoader.load_style([`./screens/${screen}/${screen}.css`]);
-            //ScriptLoader.load_scripts([`./screens/${screen}/${screen}.js`]);
-            Navigator.CURRENT_SCREEN_INSTANCE = new APP.screens[screen]();
-            Navigator.CURRENT_SCREEN_INSTANCE.init();
-        //})
+        Navigator.CURRENT_SCREEN_INSTANCE = new app.loaded_screens[name];
+        Navigator.CURRENT_SCREEN_INSTANCE.init();
     }
 }
