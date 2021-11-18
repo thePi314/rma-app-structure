@@ -20,4 +20,3 @@ class StyleLoader {
                 styles[0],styles.slice(1,styles.length)));
     }
 }
-
