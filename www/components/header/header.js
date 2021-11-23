@@ -2,20 +2,12 @@ class HeaderComponent extends BaseComponent{
     static Name = 'header'
     static ClassName = 'component-header';
 
-    static load_config() {
-        FileLoader.load_file(this.Config.template, (data)=>{
-            this.Template = data;
-            StyleLoader.load_style([this.Config.style]);
-        });
-    }
-
     static init_events(root_dom){
         let selected_screen = root_dom.querySelector(`.navbar-item[screen="${root_dom.getAttribute('selected-screen')}"]`)
         if(selected_screen != null){
             selected_screen.classList.add('selected')
             let img = selected_screen.querySelector('img');
             img.src = img.src.split('.').slice(0,img.src.split('.').length-1).join('.') + '_white.svg';
-            //console.log(img.src);
         }
 
         // init toogler logic

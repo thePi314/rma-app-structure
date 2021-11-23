@@ -10,6 +10,13 @@ class BaseComponent {
             template: `./components/${this.Name}/${this.Name}.html`
         }
     }
+
+    static load_config() {
+        FileLoader.load_file(this.Config.template, (data)=>{
+            this.Template = data;
+            StyleLoader.load_style([this.Config.style]);
+        });
+    }   
     
     static __all__load_component(){
         document.querySelectorAll(`.component.${this.ClassName}`).forEach(cmp => {

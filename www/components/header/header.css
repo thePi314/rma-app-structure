@@ -53,6 +53,8 @@
 
 .component-header {
     width: 100%;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .component-header > .displayed-row {
@@ -71,8 +73,10 @@
 }
 
 .component-header > .navbar {
+    position: absolute;
     display: none;
-    min-height: calc(var(--dimension-height) - 48px);
+    width: calc(100% - 40px);
+    height: calc(var(--dimension-height) - 48px - 50px);
     padding: 50px 20px 0;
     background: var(--color-grey-yellow);
 }

@@ -1,0 +1,66 @@
+.component-day-segment {
+    margin: 0 15px;
+}
+
+.component-day-segment .row {
+    display: flex;
+    flex-flow: row;
+    align-items: end;
+}
+
+.component-day-segment .row .date {
+    color: #DDDDDD;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.component-day-segment .row button {
+    margin-left: auto;
+    min-width: 100px;
+    background: #DDDDDD;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border: none;
+    font-size: 14px;
+    color: #2D2C2C;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.component-day-segment .items .item {
+    height: 54px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    background: #CFC77E ;
+    color: #2D2C2C;
+    margin: 10px 0;
+}
+
+.component-day-segment .items .item.done {
+    background: #65BB5D;
+    color: #FFF;
+}
+.component-day-segment .items .item.missed {
+    background: #BB4747;
+    color: #FFF;
+}
+
+.component-day-segment .items .item .time {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    position: relative;
+    display: flex;
+    margin-right: 20px;
+}
+
+.component-day-segment .items .item .time .minutes {
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.component-day-segment .items .item .activity {
+    font-weight: bold;
+    font-size: 24px;
+}

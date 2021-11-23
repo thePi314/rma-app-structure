@@ -10,7 +10,8 @@
     "components": [
         "./screens/screen",
         "./components/base",
-        "./components/header"
+        "./components/header",
+        "./components/day-segment"
     ],
     "start_screen": "home",
     "screens": {
