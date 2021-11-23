@@ -11,21 +11,19 @@ class BaseComponent {
         }
     }
     
-    static init_events(){
-        for(let ind = 0 ; ind < this.Events.init.length;ind++){
-            let event = this.Events.init[ind];
-
-            let elems = document.querySelectorAll(`.${event.component ?? this.ClassName}`)
-            elems.forEach(elem => {
-                console.log(elem)
-
-                if('name' in Object.keys(event))
-                    elem.addEventListener(event.name, (evt)=>{
-                        event.process(evt, elem);
-                    });
-                else
-                    event.process(elem);
-            });
-        }
+    static __all__load_component(){
+        document.querySelectorAll(`.component.${this.ClassName}`).forEach(cmp => {
+            cmp.innerHTML = this.Template;  
+        });
     }
+
+    static __all__init_events(){
+        let elems = document.querySelectorAll(`.component.${this.ClassName}`)
+        elems.forEach(elem => {
+            this.init_events(elem);
+        });
+    }
+
+    // Override
+    static init_events(root_dom){}
 }

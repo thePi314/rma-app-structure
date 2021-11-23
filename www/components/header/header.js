@@ -1,30 +1,6 @@
 class HeaderComponent extends BaseComponent{
     static Name = 'header'
     static ClassName = 'component-header';
-    static Events = {
-        'init': [
-            {
-                event: 'click',
-                process: (event, dom) => {
-
-                }
-            },
-            {
-                component: 'navbar-item',
-                event: 'click',
-                process: (event, dom) => {
-                    console.log(dom)
-                    //Navigator.navigate(dom.getAttribute('screen'))
-                }
-            },
-            {
-                process: (dom) => {
-                    document.querySelector(`.navbar-item[screen="${Navigator.CURRENT_SCREEN}"]`).classList.add('selected');
-                    console.log('hello')
-                }
-            }
-        ]
-    }
 
     static load_config() {
         FileLoader.load_file(this.Config.template, (data)=>{
@@ -32,7 +8,45 @@ class HeaderComponent extends BaseComponent{
             StyleLoader.load_style([this.Config.style]);
         });
     }
+
+    static init_events(root_dom){
+        let selected_screen = root_dom.querySelector(`.navbar-item[screen="${root_dom.getAttribute('selected-screen')}"]`)
+        if(selected_screen != null){
+            selected_screen.classList.add('selected')
+            let img = selected_screen.querySelector('img');
+            img.src = img.src.split('.').slice(0,img.src.split('.').length-1).join('.') + '_white.svg';
+            //console.log(img.src);
+        }
+
+        // init toogler logic
+        let toggler_elem = root_dom.querySelector('.navbar-toogler');
+        let navbar_elem = root_dom.querySelector('.navbar');
+
+        toggler_elem.addEventListener('click',()=>{
+            if(navbar_elem.classList.contains('slide-left') || navbar_elem.classList.contains('slide-right'))
+                return;
+
+            if(navbar_elem.classList.contains('collapsed'))
+                navbar_elem.classList.add('slide-right');
+            else{
+                navbar_elem.classList.add('collapsed');
+                navbar_elem.classList.add('slide-left');
+            }
+        });
+    
+        navbar_elem.addEventListener('animationend',()=>{
+            if(navbar_elem.classList.contains('slide-left')){
+                navbar_elem.classList.remove('slide-left');
+            }
+            else{
+                if(navbar_elem.classList.contains('slide-right')){
+                    navbar_elem.classList.remove('slide-right');
+                    navbar_elem.classList.remove('collapsed');
+                }
+            }
+        });
+    }
 }
 
-app.components[HeaderComponent.className] = HeaderComponent;
+app.components[HeaderComponent.ClassName] = HeaderComponent;
 HeaderComponent.load_config();

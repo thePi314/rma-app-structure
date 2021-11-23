@@ -1,8 +1,7 @@
 {
     "dependencies": [
         "./utils/StyleLoader.js",
-        "./utils/Navigator.js",
-        "./component/ScreenComponent.js"
+        "./utils/Navigator.js"
     ],
     "styles":[
         "./assets/styles/colors.css",

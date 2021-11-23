@@ -1,0 +1,104 @@
+/* Animations */
+.slide-left {
+	-webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.slide-right {
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-00);
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(var(--dimension-width));
+        transform: translateX(var(--dimension-width));
+    }
+}
+@keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(var(--dimension-width));
+        transform: translateX(var(--dimension-width));
+    }
+}
+@-webkit-keyframes slide-left {
+    0% {
+        -webkit-transform: translateX(var(--dimension-width));
+        transform: translateX(var(--dimension-width));
+    }
+    100% {
+        -webkit-transform: translateX(-0);
+        transform: translateX(0);
+    }
+    
+}
+@keyframes slide-left {
+    0% {
+        -webkit-transform: translateX(var(--dimension-width));
+        transform: translateX(var(--dimension-width));
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+  
+
+.component-header {
+    width: 100%;
+}
+
+.component-header > .displayed-row {
+    display: flex;
+    flex-flow: row;
+    height: 48px;
+    background: var(--color-grey-yellow);
+}
+
+.component-header > .displayed-row > .navbar-toogler {
+    margin: auto;
+    margin-left: auto;
+    margin-right: 15px;
+    height: 32px;
+    width: auto;
+}
+
+.component-header > .navbar {
+    display: none;
+    min-height: calc(var(--dimension-height) - 48px);
+    padding: 50px 20px 0;
+    background: var(--color-grey-yellow);
+}
+
+.component-header > .navbar.collapsed {
+    display: block;
+}
+
+.component-header > .navbar > .navbar-item {
+    display: flex;
+    text-decoration: none;
+    color: var(--color-black);
+    font-size: 24px;
+    font-weight: 800;
+    margin: 8px 0;
+    align-items: end;
+}
+
+.component-header > .navbar > .navbar-item img {
+    margin-right: 20px;
+}
+
+.component-header > .navbar > .navbar-item.selected {
+    color: #fff;
+}
+
+.component-header > .navbar > .navbar-item.selected img {
+    color: #fff;
+}
