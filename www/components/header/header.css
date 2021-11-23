@@ -79,6 +79,7 @@
     height: calc(var(--dimension-height) - 48px - 50px);
     padding: 50px 20px 0;
     background: var(--color-grey-yellow);
+    z-index: 1000;
 }
 
 .component-header > .navbar.collapsed {

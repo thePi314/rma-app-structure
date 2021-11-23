@@ -1,3 +1,52 @@
+@-webkit-keyframes slide-back {
+    100% {
+        -webkit-transform: translateX(-0);
+        transform: translateX(0);
+    }
+}
+@keyframes slide-back {
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes turn-red {
+    0%{
+        background:#CFC77E;
+    }
+    100% {
+        color: #FFF;
+        background: #BB4747;
+    }
+}
+@keyframes turn-green {
+    0%{
+        background:#CFC77E;
+    }
+    100% {
+        color: #FFF;
+        background: #65BB5D;
+    }
+}
+
+.slide-back {
+	-webkit-animation: slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.turn-red.slide-back {
+    -webkit-animation:  slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+                        turn-red 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation:  slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+                        turn-red 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.turn-green.slide-back {
+    -webkit-animation:  slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+                        turn-green 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation:  slide-back 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+                        turn-green 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
 .component-day-segment {
     margin: 0 15px;
 }
@@ -35,6 +84,7 @@
     background: #CFC77E ;
     color: #2D2C2C;
     margin: 10px 0;
+    user-select: none;
 }
 
 .component-day-segment .items .item.done {
@@ -42,7 +92,7 @@
     color: #FFF;
 }
 .component-day-segment .items .item.missed {
-    background: #BB4747;
+    background: #BB4747 ;
     color: #FFF;
 }
 
