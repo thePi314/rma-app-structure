@@ -6,14 +6,16 @@ class Screen {
     dom = null;
 
     constructor(){
-        this.init();
+        //this.init();
     }
 
     init(){
         for(let key in app.components){
-            app.components[key].__all__load_component(); 
-            app.components[key].__all__init_events();   
+            app.components[key].__all__load_component(this.dom, true); 
+            app.components[key].__all__init_events(this.dom, true);   
         }
+
+        this.screen_events();
     }
 
     static create_dom(){
@@ -26,4 +28,6 @@ class Screen {
         screen.dom = elem;
         return screen;
     }
+
+    screen_events(){}
 }

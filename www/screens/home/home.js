@@ -7,6 +7,12 @@ class HomeScreen extends Screen {
     constructor(){
         super();
     }
+
+    screen_events(){
+        document.getElementById('triger-drugi').addEventListener('click',()=>{
+            SubscreenComponent.toggle('subscreen-new-task2');
+        })
+    }
 }
 
 app.screens['home'] = HomeScreen;

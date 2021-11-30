@@ -18,10 +18,11 @@ class BaseComponent {
         });
     }   
     
-    static __all__load_component(){
-        document.querySelectorAll(`.component.${this.ClassName}`).forEach(cmp => {
+    static __all__load_component(dom, screen=false){
+        dom.querySelectorAll(`${screen ? '.screen' : (':not(.screen) > ')} .component.${this.ClassName}`).forEach(cmp => {
             let children = [...cmp.children];
             cmp.innerHTML = this.Template;  
+            console.log(children);
 
             if(cmp.querySelector('.component-flag-children') != null){
                 cmp.querySelector('.component-flag-children').append(...children)
@@ -29,10 +30,21 @@ class BaseComponent {
         });
     }
 
-    static __all__init_events(){
-        let elems = document.querySelectorAll(`.component.${this.ClassName}`)
+    static __all__init_events(dom, screen=false){
+        let elems = dom.querySelectorAll(`${screen ? '.screen' : (':not(.screen) >')} .component.${this.ClassName}`)
         elems.forEach(elem => {
             this.init_events(elem);
+            this.__init_children(elem);
+        });   
+    }
+
+    static __init_children(dom){
+        let elems = dom.querySelectorAll(`:not(.screen) > .component.${this.ClassName}`)
+        elems.forEach(elem => {
+            for(let key in app.components){
+                app.components[key].__all__load_component(elem); 
+                app.components[key].__all__init_events(elem);   
+            }
         });
     }
 

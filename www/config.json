@@ -10,9 +10,9 @@
     "components": [
         "./screens/screen",
         "./components/base",
-        "./components/subscreen",
         "./components/header",
-        "./components/day-segment"
+        "./components/day-segment",
+        "./components/subscreen"
     ],
     "start_screen": "home",
     "screens": {

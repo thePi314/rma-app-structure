@@ -91,7 +91,7 @@ class DaySegmentComponent extends BaseComponent{
 
         let add_task_button = root_dom.querySelector('button');
         add_task_button.addEventListener('click',()=>{
-            
+            SubscreenComponent.toggle('subscreen-new-task');
         });
     }
 }
