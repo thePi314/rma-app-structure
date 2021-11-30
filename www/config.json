@@ -10,6 +10,7 @@
     "components": [
         "./screens/screen",
         "./components/base",
+        "./components/subscreen",
         "./components/header",
         "./components/day-segment"
     ],

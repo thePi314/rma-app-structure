@@ -20,7 +20,12 @@ class BaseComponent {
     
     static __all__load_component(){
         document.querySelectorAll(`.component.${this.ClassName}`).forEach(cmp => {
+            let children = [...cmp.children];
             cmp.innerHTML = this.Template;  
+
+            if(cmp.querySelector('.component-flag-children') != null){
+                cmp.querySelector('.component-flag-children').append(...children)
+            }
         });
     }
 

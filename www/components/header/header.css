@@ -53,8 +53,11 @@
 
 .component-header {
     width: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    width: var(--dimension-width);
     margin-bottom: 20px;
+    z-index: 100000;
 }
 
 .component-header > .displayed-row {
