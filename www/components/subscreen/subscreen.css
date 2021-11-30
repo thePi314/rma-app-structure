@@ -57,3 +57,16 @@
 	        animation: close-collapsing 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     display: block;
 }
+
+.component.component-subscreen > .subscreen-header {
+    margin-top: 10px;
+}
+
+.component.component-subscreen > .subscreen-header > .subscreen-close {
+    font-size: 28px;
+    text-decoration: none;
+    color: var(--color-black);
+    font-family: Arial;
+    margin-left: 10px;
+    font-weight: 600;
+}

@@ -1,13 +1,27 @@
 <div class="component component-header" selected-screen="home"></div>
 
-<div class="component component-day-segment" data='{"id":1,"date": "21 oktobar","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
-<div class="component component-day-segment" data='{"id":1,"date": "21 oktobar","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
-<div class="component component-day-segment" data='{"id":1,"date": "21 oktobar","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
-
+<div class="day-segments">
+    <!--<div class="component component-day-segment" data='{"id":1,"date": "2021-11-21","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
+    <div class="component component-day-segment" data='{"id":1,"date": "2021-11-21","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
+    <div class="component component-day-segment" data='{"id":1,"date": "2021-11-21","tasks":[{"id":1,"time":"07:30","status": null,"title": "Wake up"},{"id":2,"time":"07:30","status": "missed","title": "Wake up"},{"id":3,"time":"07:30","status": "done","title": "Wake up"}]}'></div>
+        !-->
+</div>
 
 <div class="component component-subscreen" id="subscreen-new-task">
-    <button id="triger-drugi">TRIGER DRUGI</button>
-    <div class="component component-subscreen" id="subscreen-new-task2">
-        DRUGI
+    <div class="wrapper">
+        <div class="input-label" name="date">
+            <div class="label">DATE</div>
+            <input type="date"/>
+        </div>
+        <div class="input-label" name="time">
+            <div class="label">TIME</div>
+            <input type="time"/>
+        </div>
+        <div class="input-label" name="title">
+            <div class="label">TITLE</div>
+            <textarea></textarea>
+        </div>
+
+        <button>Save</button>
     </div>
 </div>

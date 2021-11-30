@@ -10,6 +10,8 @@ class Screen {
     }
 
     init(){
+        this.before_render();
+
         for(let key in app.components){
             app.components[key].__all__load_component(this.dom, true); 
             app.components[key].__all__init_events(this.dom, true);   
@@ -30,4 +32,5 @@ class Screen {
     }
 
     screen_events(){}
+    before_render(){}
 }

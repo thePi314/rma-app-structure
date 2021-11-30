@@ -1,33 +1,43 @@
+const MONTHS = [
+    "Januar",
+    "Februar",
+    "Mart",
+    "April",
+    "Maj",
+    "Juni",
+    "Juli",
+    "August",
+    "Septembar",
+    "Oktobar",
+    "Novembar",
+    "Decembar"
+]
+
 class DaySegmentComponent extends BaseComponent{
     static Name = 'day-segment'
     static ClassName = 'component-day-segment';
 
-    /*<div class="item done">
-        <div class="time">
-            07 <span class="minutes">30</span>
-        </div>
-        <div class="activity">Wake up</div>
-    </div>*/
-    static create_item(id,time,status,title){
+    static create_item(task){
         return `
-            <div id="day-segment-item-${id}" class="item ${status != null ? status : ""}">
+            <div id="${task.id}" class="item ${task.status != null ? task.status : ""}">
                 <div class="time">
-                    ${time.split(":")[0]} <span class="minutes">${time.split(":")[1]}</span>
+                    ${task.time.split(":")[0]} <span class="minutes">${task.time.split(":")[1]}</span>
                 </div>
-                <div class="activity">${title}</div>
+                <div class="activity">${task.title}</div>
             </div>
         `;
     }
 
     static init_events(root_dom){
         let data = JSON.parse(root_dom.getAttribute('data'));
-        root_dom.querySelector('.row .date').innerText = data.date;
+        root_dom.querySelector('.row .date').innerText = `${new Date(data.date).getDate()} ${MONTHS[new Date(data.date).getMonth()]}` ;
 
         let items_wrapper = root_dom.querySelector('.items');
         for(let ind=0;ind<data.tasks.length;ind++){
             let task = data.tasks[ind];
-            items_wrapper.innerHTML += DaySegmentComponent.create_item(task.id,task.time,task.status,task.title);
+            items_wrapper.innerHTML += DaySegmentComponent.create_item(task);
         }
+        root_dom.setAttribute('data',JSON.stringify({...data, tasks:null}))
 
         let items = root_dom.querySelectorAll('.item:not(.done):not(.missed)');
         const radius = 100;
@@ -91,6 +101,7 @@ class DaySegmentComponent extends BaseComponent{
 
         let add_task_button = root_dom.querySelector('button');
         add_task_button.addEventListener('click',()=>{
+            let elem = document.querySelector('#subscreen-new-task .wrapper .input-label[name="date"] input').setAttribute('value',data.date);
             SubscreenComponent.toggle('subscreen-new-task');
         });
     }
