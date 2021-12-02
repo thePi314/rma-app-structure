@@ -32,6 +32,23 @@ class HomeScreen extends Screen {
             subscreen.querySelector('.input-label[name="date"] input').value = null;
             subscreen.querySelector('.input-label[name="title"] textarea').value = null;
 
+            if('subscreen-new-task-add-position' in app.cache && app.cache['subscreen-new-task-add-position'] != null){
+                let wrapper = this.dom.querySelector(`.day-segments .component.component-day-segment#ds-${app.cache['subscreen-new-task-add-position']}`);
+                let data = null;
+
+                app.data.dates = app.data.dates.map(date => {
+                    if(date.id == app.cache['subscreen-new-task-add-position']){
+                        date.tasks.push(data);
+                        data = date;
+                    }
+                    return date;    
+                });
+                wrapper.setAttribute('data',`${JSON.stringify(data)}`);
+                DaySegmentComponent.init_events(wrapper);
+
+                app.cache['subscreen-new-task-add-position'] = null;
+            }
+
             SubscreenComponent.toggle('subscreen-new-task');
         })
     }

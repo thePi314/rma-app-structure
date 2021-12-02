@@ -31,6 +31,7 @@ class DaySegmentComponent extends BaseComponent{
     static init_events(root_dom){
         let data = JSON.parse(root_dom.getAttribute('data'));
         root_dom.querySelector('.row .date').innerText = `${new Date(data.date).getDate()} ${MONTHS[new Date(data.date).getMonth()]}` ;
+        root_dom.setAttribute('id', `ds-${data.id}`);
 
         let items_wrapper = root_dom.querySelector('.items');
         for(let ind=0;ind<data.tasks.length;ind++){
@@ -101,7 +102,9 @@ class DaySegmentComponent extends BaseComponent{
 
         let add_task_button = root_dom.querySelector('button');
         add_task_button.addEventListener('click',()=>{
-            let elem = document.querySelector('#subscreen-new-task .wrapper .input-label[name="date"] input').setAttribute('value',data.date);
+            document.querySelector('#subscreen-new-task .wrapper .input-label[name="date"] input').setAttribute('value',data.date);
+            app.cache['subscreen-new-task-add-position'] = data.id;
+
             SubscreenComponent.toggle('subscreen-new-task');
         });
     }
