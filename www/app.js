@@ -9,10 +9,10 @@ var app = {
                 date: "2021-11-21",
                 tasks:[
                     {
-                        id:1,
-                        time: "07:30",
-                        status: "missed",
-                        title: "Ustajanje"
+                            id:1,
+                            time: "07:30",
+                            status: "missed",
+                            title: "Ustajanje"
                     },
                     {
                         id:2,

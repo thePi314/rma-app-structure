@@ -6,8 +6,9 @@ class Field {
     }
 
     set(value){
-        if(this.constructor.validate())
-            this.value = value;
+        if(!this.constructor.validate())
+            throw new Error(`${value} is not type of ${this.constructor.name}`);
+        this.value = value;
     }
     get(){
         return this.value;

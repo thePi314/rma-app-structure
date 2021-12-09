@@ -1,17 +1,23 @@
 class DateField extends Field {
     static validators = [
         (value)=>{
-            value.constructor.name === 'Date';
+            try{
+                return value.constructor.name === 'Date';
+            }
+            catch(err){
+                return false;
+            }
         }
     ]
 
     constructor(value=null, default_value=null){
-        this.value = value ?? default_value;
+        super(value, default_value);
     }
 
     set(value){
-        if(this.constructor.validate())
-            this.value = value;
+        if(!this.constructor.validate(value))
+            throw new Error(`${value} is not type of ${this.constructor.name}`);
+        this.value = value;
     }
     get(){
         return this.value;

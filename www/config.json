@@ -1,7 +1,15 @@
 {
     "dependencies": [
         "./utils/StyleLoader.js",
-        "./utils/Navigator.js"
+        "./utils/Navigator.js",
+        "./models/fields/base.js",
+        "./models/fields/date.js",
+        "./models/fields/integer.js",
+        "./models/fields/list.js",
+        "./models/fields/number.js",
+        "./models/fields/string.js",
+        "./models/fields/primary.js",
+        "./models/base.js"
     ],
     "styles":[
         "./assets/styles/colors.css",
@@ -13,6 +21,9 @@
         "./components/header",
         "./components/day-segment",
         "./components/subscreen"
+    ],
+    "models": [
+        "./models/date.js"
     ],
     "start_screen": "home",
     "screens": {

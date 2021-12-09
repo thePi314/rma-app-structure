@@ -1,4 +1,4 @@
-class ListField extends List {
+class ListField extends Field {
     static validators = [
         (value)=>{
             return Array.isArray(value);
@@ -15,7 +15,7 @@ class ListField extends List {
 
     push(item){
         if(item.constructor !== this.child_type){
-            throw "Item is not of predefined type!";
+            throw new Error("Item is not of predefined type!");
         }
 
         this.value.push(item);
