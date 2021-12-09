@@ -1,52 +1,68 @@
-#home-screen {
-    background: var(--color-black);   
+.tijelo{
+    height: 640px;
+    width: 360px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F3E9E9;
 }
 
-#home-screen #subscreen-new-task .wrapper {
-    margin: 20px;
+.header{
+    height: 57px;
+    background-color: #F2FC83;
     display: flex;
-    flex-flow: column;
 }
 
-#home-screen #subscreen-new-task .wrapper .input-label {
-    margin: 10px 0;
+.ploca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#home-screen #subscreen-new-task .wrapper .input-label .label {
-    text-align: right;
-    color: var(--color-black);
-    font-size: 20px;
-    font-weight: 600;
+.crna{
+    height: 40px;
+    width: 40px;
+    background-color: #C4C4C4;
+}
+.bijela{
+    height: 40px;
+    width: 40px;
+    background-color: #FFFFFF;
 }
 
-#home-screen #subscreen-new-task .wrapper .input-label input {
-    width: 100%;
-    height: 48px;
-    text-align: center;
+.platno{
+    margin-top: 16px;
+}
+
+.tool-bar{
+    height: 222px;
+    background-color: #F2FC83;
+    margin-top: 24px;
+}
+.back-button
+{
+    margin-left: 12px;
+    margin-top: 8px;
+    margin-bottom: 9px;
+}
+.name{
+    margin-left: 65px;
     font-size: 18px;
-
-    border: solid 1px grey;
-    border-radius: 8px;
+    margin-top: 17px;
+}
+.hamburger{
+    margin-left: 75px;
+    margin-top: 8px;
 }
 
-
-#home-screen #subscreen-new-task .wrapper .input-label input[type="date"] {}
-#home-screen #subscreen-new-task .wrapper .input-label input[type="time"] {}
-
-
-#home-screen #subscreen-new-task .wrapper .input-label textarea {
-    width: 100%;
-    height: 280px;
-    font-size: 18px;
-    border-radius: 8px;
+.tools{
+  margin-left: 20px;
+  padding-top: 24px;
+  display: flex;
+  height: 40px;
 }
 
-#home-screen #subscreen-new-task .wrapper button {
-    padding: 8px;
-    min-width: 128px;
-    background: var(--color-black);
-    border: none;
-    color: white;
-    font-size: 18px;
-    margin-left: auto;
+.tool-bar > .tools > img {
+    margin: 0 auto;
 }

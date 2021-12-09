@@ -2,34 +2,7 @@ const CONFIG_FILE_PATH = './config.json';
 
 var app = {
     cache:{},
-    data:{
-        dates:[
-            {
-                id:1,
-                date: "2021-11-21",
-                tasks:[
-                    {
-                        id:1,
-                        time: "07:30",
-                        status: "missed",
-                        title: "Ustajanje"
-                    },
-                    {
-                        id:2,
-                        time:"08:00",
-                        status: null,
-                        title: "Skola"
-                    },
-                    {
-                        id:3,
-                        time:"13:00",
-                        status: null,
-                        title: "Kafa"
-                    }
-                ]
-            }
-        ]
-    },
+    data:{},
     screens: {},
     components:{},
     config:null,

@@ -11,7 +11,6 @@
         "./screens/screen",
         "./components/base",
         "./components/header",
-        "./components/day-segment",
         "./components/subscreen"
     ],
     "start_screen": "home",
