@@ -77,10 +77,15 @@ var app = {
             ScriptLoader.load_scripts(
                 app.config.components.map(component => `${component}/${component.split('/')[component.split('/').length-1]}.js`), 
                 ()=>{
-                    StyleLoader.load_style(app.config.styles);
-                    app.setup.load_screens(); 
+                    app.setup.load_models();
                 }
             );
+        },
+        load_models: function(){
+            ScriptLoader.load_scripts(app.config.models, ()=>{
+                StyleLoader.load_style(app.config.styles);
+                app.setup.load_screens(); 
+            });
         },
         load_screens: function (){
             let screens = Object.keys(app.config.screens).map(

@@ -10,8 +10,11 @@ class DateField extends Field {
         }
     ]
 
-    constructor(value=null, default_value=null){
-        super(value, default_value);
+    constructor(args={}){
+        super(args.value ?? null, args.default_value ?? null);
+        if(args.auto_now && !this.value){
+            this.value = new Date();
+        }
     }
 
     set(value){

@@ -14,10 +14,9 @@ class ListField extends Field {
     }
 
     push(item){
-        if(item.constructor !== this.child_type){
+        if(item.constructor !== this.child_type)
             throw new Error("Item is not of predefined type!");
-        }
-
+    
         this.value.push(item);
     }
 

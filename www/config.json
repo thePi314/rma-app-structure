@@ -9,6 +9,7 @@
         "./models/fields/number.js",
         "./models/fields/string.js",
         "./models/fields/primary.js",
+        "./models/fields/time.js",
         "./models/base.js"
     ],
     "styles":[

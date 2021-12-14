@@ -1,5 +1,5 @@
 class DateModel extends ModelBase {
-    static name = 'dates';
+    static name = 'DateModel';
     static schema = {
         'date': {
             class: DateField,

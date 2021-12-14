@@ -1,6 +1,6 @@
 class PrimaryField extends Field {
-    constructor(value=null, default_value=null){
-        this.value = value ?? default_value;
+    constructor(value=null){
+        super(value,value);
     }
 
     get(){return this.value;}
