@@ -31,6 +31,7 @@ class Screen {
         return screen;
     }
 
+    unload(){ this.dom.remove();}
     screen_events(){}
     before_render(){}
 }
