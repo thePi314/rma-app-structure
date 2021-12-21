@@ -11,7 +11,8 @@ class Navigator{
         if(Navigator.CURRENT_SCREEN_INSTANCE != null)
             Navigator.HISTORY.push(Navigator.CURRENT_SCREEN_INSTANCE);
 
-        Navigator.CURRENT_SCREEN.unload();
+        if(Navigator.CURRENT_SCREEN)
+            Navigator.CURRENT_SCREEN.unload();
         Navigator.CURRENT_SCREEN = screen_name;
         Navigator.CURRENT_SCREEN_INSTANCE = app.screens[name].create_dom();
 

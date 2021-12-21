@@ -2,6 +2,7 @@
     "dependencies": [
         "./utils/StyleLoader.js",
         "./utils/Navigator.js",
+        "./utils/FileManager.js",
         "./models/fields/base.js",
         "./models/fields/date.js",
         "./models/fields/integer.js",
